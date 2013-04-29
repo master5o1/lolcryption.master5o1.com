@@ -1,94 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>LOLcryption</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-</head>
-<body>
-	<div class="container">
-		<div class="">
-			<h1>LOLcryption</h1>
-		</div>
-		<div class="row">
-			<fieldset class="span6">
-				<legend>Plain Text</legend>
-				<textarea id="plaintext" class="span6" style="min-height: 100px;" placeholder="Hello, world."></textarea>
-				<div class="btn-toolbar" style="text-align: center;">
-					<div class="btn-group">
-						<button id="enlolcrypt" class="btn">enLOLcrypt <i class="icon icon-chevron-right"></i></button>
+	<head>
+		<title>LOLcryption</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style type="text/css">
+			.small-oblique {
+				font-style: oblique;
+				font-size: small;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>LOLcryption <span class="small-oblique">(XAXpdlbguaz)</span></h1>
+			<div class="row">
+				<fieldset class="span6">
+					<legend>Plain Text <span class="small-oblique">(Bxiuz Gokg)</span></legend>
+					<textarea id="plaintext" class="span6" style="min-height: 100px;" placeholder="Hello, world."></textarea>
+					<div class="btn-toolbar" style="text-align: center;">
+						<div class="btn-group">
+							<button id="enlolcrypt" class="btn">enLOLcrypt <i class="icon icon-chevron-right"></i></button>
+						</div>
 					</div>
-				</div>
-			</fieldset>
-			<fieldset class="span6">
-				<legend>Cipher Text</legend>
-				<textarea id="ciphertext" class="span6" style="min-height: 100px;" placeholder="Toxxa, jadxq."></textarea>
-				<div class="btn-toolbar" style="text-align: center;">
-					<div class="btn-group">
-						<button id="delolcrypt" class="btn"><i class="icon icon-chevron-left"></i> deLOLcrypt</button>
+				</fieldset>
+				<fieldset class="span6">
+					<legend>Cipher Text <span class="small-oblique">(Pubtod Gokg)</span></legend>
+					<textarea id="ciphertext" class="span6" style="min-height: 100px;" placeholder="Toxxa, jadxq."></textarea>
+					<div class="btn-toolbar" style="text-align: center;">
+						<div class="btn-group">
+							<button id="delolcrypt" class="btn"><i class="icon icon-chevron-left"></i> deLOLcrypt</button>
+						</div>
 					</div>
+				</fieldset>
+			</div>
+			<div class="row">
+				<div class="span6">
+					<legend>What is LOLcryption?</legend>
+					<p>LOLcryption is a caesar cipher like ROT13, but with a twist.</p>
+					<p>While ROT13 shifts the characters along one alphabet, LOLcryption uses two &mdash; consonants and vowels.</p>
+					<p>LOLcryption considers vowels separate, and shifts them independently. 'a' becomes 'i', 'e' becomes 'o', 'i' becomes 'u', 'o' becomes 'a', and 'u' becomes 'e'.</p>
+					<p>Similarly, 'b' becomes 'n', and so on until 'z' becomes 'm'.</p>
 				</div>
-			</fieldset>
+				<div class="span6">
+					<legend>Jtig uf XAXpdlbguaz?</legend>
+					<p>XAXpdlbguaz uf i piofid pubtod xuwo DAG13, neg jugt i gjufg.</p>
+					<p>Jtuxo DAG13 fturgf gto ptidipgodf ixazs azo ixbtinog, XAXpdlbguaz efof gja &mdash; pazfazizgf izq hajoxf.</p>
+					<p>XAXpdlbguaz pazfuqodf hajoxf fobidigo, izq fturgf gtoy uzqobozqozgxl. 'i' nopayof 'u', 'o' nopayof 'a', 'u' nopayof 'e', 'a' nopayof 'i', izq 'e' nopayof 'o'.</p>
+					<p>Fuyuxidxl, 'n' nopayof 'z', izq fa az ezgux 'm' nopayof 'y'.</p>
+				</div>
+			</div>
 		</div>
-	</div>
-	
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script>
-	(function ($) {
-		var enlolcrypt = function (str, cipher) {
-			var cipher = cipher || "aeioubcdfghjklmnpqrstvwxyz";
-			return str.split("").map(function (T) {
-				var c = /[A-Z]/.test(T),
-					T = T.toLowerCase(),
-					i = cipher.indexOf(T);
-				if (/[^a-z]/.test(T)) {
-					return T;
-				}
-
-				if ((new RegExp("[" + cipher.substr(0, 5) + "]")).test(T)) {
-					T = cipher[(i + 2) % 5];
-				} else {
-					T = cipher[(i + 5) % 21 + 5];
-				}
-
-				return c ? T.toUpperCase() : T;
-			}).join("");
-		};
-
-		var delolcrypt = function (str, cipher) {
-			var cipher = cipher || "aeioubcdfghjklmnpqrstvwxyz";
-			return str.split("").map(function (T) {
-				var c = /[A-Z]/.test(T),
-					T = T.toLowerCase(),
-					i = cipher.indexOf(T),
-					mod = function (a, n) {
-						return ((a % n) + n) % n;
-					};
-				if (/[^a-z]/.test(T)) {
-					return T;
-				}
-
-				if ((new RegExp("[" + cipher.substr(0, 5) + "]")).test(T)) {
-					T = cipher[mod(i - 2, 5)];
-				} else {
-					T = cipher[mod(i - 15, 21) + 5];
-				}
-
-				return c ? T.toUpperCase() : T;
-			}).join("");
-		};
-
-		$('#enlolcrypt').on('click', function () {
-			var ciphertext = enlolcrypt($('#plaintext').val());
-			$('#ciphertext').val(ciphertext);
-		});
-		$('#delolcrypt').on('click', function () {
-			var plaintext = delolcrypt($('#ciphertext').val());
-			$('#plaintext').val(plaintext);
-		});
 		
-		
-	})(jQuery);
-	</script>
-</body>
-</head>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script>
+		(function ($) {
+			var enlolcrypt = function (str, cipher) {
+				var cipher = cipher || "aeioubcdfghjklmnpqrstvwxyz";
+				return str.split("").map(function (T) {
+					var c = /[A-Z]/.test(T),
+						T = T.toLowerCase(),
+						i = cipher.indexOf(T);
+					if (/[^a-z]/.test(T)) {
+						return T;
+					}
+
+					if ((new RegExp("[" + cipher.substr(0, 5) + "]")).test(T)) {
+						T = cipher[(i + 2) % 5];
+					} else {
+						T = cipher[(i + 5) % 21 + 5];
+					}
+
+					return c ? T.toUpperCase() : T;
+				}).join("");
+			};
+
+			var delolcrypt = function (str, cipher) {
+				var cipher = cipher || "aeioubcdfghjklmnpqrstvwxyz";
+				return str.split("").map(function (T) {
+					var c = /[A-Z]/.test(T),
+						T = T.toLowerCase(),
+						i = cipher.indexOf(T),
+						mod = function (a, n) {
+							return ((a % n) + n) % n;
+						};
+					if (/[^a-z]/.test(T)) {
+						return T;
+					}
+
+					if ((new RegExp("[" + cipher.substr(0, 5) + "]")).test(T)) {
+						T = cipher[mod(i - 2, 5)];
+					} else {
+						T = cipher[mod(i - 15, 21) + 5];
+					}
+
+					return c ? T.toUpperCase() : T;
+				}).join("");
+			};
+
+			$('#enlolcrypt').on('click', function () {
+				var ciphertext = enlolcrypt($('#plaintext').val());
+				$('#ciphertext').val(ciphertext);
+			});
+			$('#delolcrypt').on('click', function () {
+				var plaintext = delolcrypt($('#ciphertext').val());
+				$('#plaintext').val(plaintext);
+			});
+			
+			
+		})(jQuery);
+		</script>
+	</body>
+</html>

@@ -26,12 +26,11 @@
         return str.split("").map(function (T) {
             var c = /[A-Z]/.test(T),
                 i = null,
-                mod = null;
+                mod = function (a, n) {
+                    return ((a % n) + n) % n;
+                };
             T = T.toLowerCase();
             i = cipher.indexOf(T);
-            mod = function (a, n) {
-                return ((a % n) + n) % n;
-            };
             if (/[^a-z]/.test(T)) {
                 return T;
             }

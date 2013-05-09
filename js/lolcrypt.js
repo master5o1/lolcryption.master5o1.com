@@ -34,11 +34,14 @@
         $('#plaintext').val(plaintext);
     });
     
-    $('#rot13').on('click', function () {
-        var plaintext = ro13($('#ciphertext').val());
+    $('#rot13-plain').on('click', function () {
         var ciphertext = ro13($('#plaintext').val());
-        $('#plaintext').val(plaintext);
         $('#ciphertext').val(ciphertext);
+    });
+    
+    $('#rot13-cipher').on('click', function () {
+        var plaintext = ro13($('#ciphertext').val());
+        $('#plaintext').val(plaintext);
     });
 
 

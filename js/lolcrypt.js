@@ -35,12 +35,12 @@
     });
     
     $('#rot13-plain').on('click', function () {
-        var ciphertext = ro13($('#plaintext').val());
+        var ciphertext = rot13($('#plaintext').val());
         $('#ciphertext').val(ciphertext);
     });
     
     $('#rot13-cipher').on('click', function () {
-        var plaintext = ro13($('#ciphertext').val());
+        var plaintext = rot13($('#ciphertext').val());
         $('#plaintext').val(plaintext);
     });
 

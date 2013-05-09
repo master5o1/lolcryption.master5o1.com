@@ -20,6 +20,10 @@
     var delolcrypt = function (str) {
         return tr(str, 'iouaenpqrstvwxyzbcdfghjklm', 'aeioubcdfghjklmnpqrstvwxyz');
     };
+    
+    var rot13 = function (str) {
+        return tr(str, 'abcdefghijklmnopqrstuvwxyz', 'nopqrstuvwxyzabcdefghijklm');
+    };
 
     $('#enlolcrypt').on('click', function () {
         var ciphertext = enlolcrypt($('#plaintext').val());
@@ -28,6 +32,13 @@
     $('#delolcrypt').on('click', function () {
         var plaintext = delolcrypt($('#ciphertext').val());
         $('#plaintext').val(plaintext);
+    });
+    
+    $('#rot13').on('click', function () {
+        var plaintext = ro13($('#ciphertext').val());
+        var ciphertext = ro13($('#plaintext').val());
+        $('#plaintext').val(plaintext);
+        $('#ciphertext').val(ciphertext);
     });
 
 

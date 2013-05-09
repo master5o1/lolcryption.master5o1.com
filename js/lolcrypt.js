@@ -36,8 +36,8 @@
     });
     
     $('#rot13').on('click', function () {
-        var plaintext = rot13($('#ciphertext').val());
-        var ciphertext = rot13($('#plaintext').val());
+        var plaintext = rot13($('#plaintext').val());
+        var ciphertext = rot13($('#ciphertext').val());
         $('#ciphertext').val(ciphertext);
         $('#plaintext').val(plaintext);
     });

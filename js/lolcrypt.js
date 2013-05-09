@@ -5,7 +5,8 @@
         outAlphabet = outAlphabet || 'iouaenpqrstvwxyzbcdfghjklm';
 
         return str.split('').map(function (c) {
-            var isCaps = /[A-Z]/.test(c);
+            var isCaps, index;
+            isCaps = /[A-Z]/.test(c);
             c = c.toLowerCase();
             index = inAlphabet.indexOf(c);
             c = index > -1 ? outAlphabet.charAt(index) : c;

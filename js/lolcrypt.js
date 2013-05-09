@@ -1,48 +1,24 @@
 (function ($) {
     'use strict';
-    var enlolcrypt = function (str, cipher) {
-        cipher = cipher || "aeioubcdfghjklmnpqrstvwxyz";
-        return str.split("").map(function (T) {
-            var c = /[A-Z]/.test(T),
-                i = null;
-            T = T.toLowerCase();
-            i = cipher.indexOf(T);
-            if (/[^a-z]/.test(T)) {
-                return T;
-            }
+    var tr = function (str, inAlphabet, outAlphabet) {
+        inAlphabet = inAlphabet || 'aeioubcdfghjklmnpqrstvwxyz';
+        outAlphabet = outAlphabet || 'iouaenpqrstvwxyzbcdfghjklm';
 
-            if ((new RegExp("[" + cipher.substr(0, 5) + "]")).test(T)) {
-                T = cipher[(i + 2) % 5];
-            } else {
-                T = cipher[(i + 5) % 21 + 5];
-            }
-
-            return c ? T.toUpperCase() : T;
-        }).join("");
+        return str.split('').map(function (c) {
+            var isCaps = /[A-Z]/.test(c);
+            c = c.toLowerCase();
+            index = inAlphabet.indexOf(c);
+            c = index > -1 ? outAlphabet.charAt(index) : c;
+            return isCaps ? c.toUpperCase() : c;
+        }).join('');
     };
 
-    var delolcrypt = function (str, cipher) {
-        cipher = cipher || "aeioubcdfghjklmnpqrstvwxyz";
-        return str.split("").map(function (T) {
-            var c = /[A-Z]/.test(T),
-                i = null,
-                mod = function (a, n) {
-                    return ((a % n) + n) % n;
-                };
-            T = T.toLowerCase();
-            i = cipher.indexOf(T);
-            if (/[^a-z]/.test(T)) {
-                return T;
-            }
+    var enlolcrypt = function (str) {
+        return tr(str, 'aeioubcdfghjklmnpqrstvwxyz', 'iouaenpqrstvwxyzbcdfghjklm');
+    };
 
-            if ((new RegExp("[" + cipher.substr(0, 5) + "]")).test(T)) {
-                T = cipher[mod(i - 2, 5)];
-            } else {
-                T = cipher[mod(i - 15, 21) + 5];
-            }
-
-            return c ? T.toUpperCase() : T;
-        }).join("");
+    var delolcrypt = function (str) {
+        return tr(str, 'iouaenpqrstvwxyzbcdfghjklm', 'aeioubcdfghjklmnpqrstvwxyz');
     };
 
     $('#enlolcrypt').on('click', function () {

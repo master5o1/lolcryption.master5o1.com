@@ -35,13 +35,10 @@
         $('#plaintext').val(plaintext);
     });
     
-    $('#rot13-plain').on('click', function () {
+    $('#rot13').on('click', function () {
+        var plaintext = rot13($('#ciphertext').val());
         var ciphertext = rot13($('#plaintext').val());
         $('#ciphertext').val(ciphertext);
-    });
-    
-    $('#rot13-cipher').on('click', function () {
-        var plaintext = rot13($('#ciphertext').val());
         $('#plaintext').val(plaintext);
     });
 

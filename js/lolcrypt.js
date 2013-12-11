@@ -10,6 +10,14 @@
         });
     };
 
+    var imgurEncrypt = function (str) {
+        return tr(str, '1234567890-=qwertyuiopasdfghjkl;\'zxcvbnm,./', '/1234567890-=qwertyuiopasdfghjkl;\'zxcvbnm,.');
+    };
+
+    var imgurDecrypt = function (str) {
+        return tr(str, '/1234567890-=qwertyuiopasdfghjkl;\'zxcvbnm,.', '1234567890-=qwertyuiopasdfghjkl;\'zxcvbnm,./');
+    };
+
     var enlolcrypt = function (str) {
         return tr(str, 'aeioubcdfghjklmnpqrstvwxyz', 'iouaenpqrstvwxyzbcdfghjklm');
     };
@@ -28,6 +36,15 @@
     });
     $('#delolcrypt').on('click', function () {
         var plaintext = delolcrypt($('#ciphertext').val());
+        $('#plaintext').val(plaintext);
+    });
+    
+    $('#imgurEncrypt').on('click', function () {
+        var ciphertext = imgurEncrypt($('#plaintext').val());
+        $('#ciphertext').val(ciphertext);
+    });
+    $('#imgurDecrypt').on('click', function () {
+        var plaintext = imgurDecrypt($('#ciphertext').val());
         $('#plaintext').val(plaintext);
     });
     

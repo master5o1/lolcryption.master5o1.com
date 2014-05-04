@@ -23,10 +23,20 @@
 					<textarea id="plaintext" class="span6" style="min-height: 100px;" placeholder="Hello, world."></textarea>
 					<div class="btn-toolbar" style="text-align: center;">
 						<div class="btn-group">
-							<button id="enlolcrypt" class="btn">enLOLcrypt <i class="icon icon-chevron-right"></i></button>
-						</div>
-						<div class="btn-group">
-							<button id="imgurEncrypt" class="btn">imgur encrypt <i class="icon icon-chevron-right"></i></button>
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								Encrypt <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" style="text-align: left;">
+								<li>
+									<a href="#" id="enlolcrypt">enLOLcrypt</a>
+								</li>
+								<li>
+									<a href="#" id="imgurEncrypt">imgur encrypt</a>
+								</li>
+								<li>
+									<a href="#" id="theuconEncrypt">Theucon encrypt</a>			
+								</li>
+							</ul>
 						</div>
 					</div>
 				</fieldset>
@@ -35,10 +45,20 @@
 					<textarea id="ciphertext" class="span6" style="min-height: 100px;" placeholder="Toxxa, jadxq."></textarea>
 					<div class="btn-toolbar" style="text-align: center;">
 						<div class="btn-group">
-							<button id="delolcrypt" class="btn"><i class="icon icon-chevron-left"></i> deLOLcrypt</button>
-						</div>
-						<div class="btn-group">
-							<button id="imgurDecrypt" class="btn"><i class="icon icon-chevron-left"></i> imgur decrypt</button>
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								Decrypt <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" style="text-align: left;">
+								<li>
+									<a href="#" id="delolcrypt">deLOLcrypt</a>
+								</li>
+								<li>
+									<a href="#" id="imgurDecrypt">imgur decrypt</a>
+								</li>
+								<li>
+									<a href="#" id="theuconDecrypt">Theucon decrypt</a>			
+								</li>
+							</ul>
 						</div>
 					</div>
 				</fieldset>
@@ -52,11 +72,11 @@
 					<p>Similarly, 'b' becomes 'n', and so on until 'z' becomes 'm'.</p>
 				</div>
 				<div class="span6">
-					<legend>Jtig uf XAXpdlbguaz?</legend>
-					<p>XAXpdlbguaz uf i piofid pubtod xuwo DAG13, neg jugt i gjufg.</p>
-					<p>Jtuxo DAG13 fturgf gto ptidipgodf ixazs azo ixbtinog, XAXpdlbguaz efof gja &mdash; pazfazizgf izq hajoxf.</p>
-					<p>XAXpdlbguaz pazfuqodf hajoxf fobidigo, izq fturgf gtoy uzqobozqozgxl. 'i' nopayof 'u', 'o' nopayof 'a', 'u' nopayof 'e', 'a' nopayof 'i', izq 'e' nopayof 'o'.</p>
-					<p>Fuyuxidxl, 'n' nopayof 'z', izq fa az ezgux 'm' nopayof 'y'.</p>
+					<legend>What is Theucon?</legend>
+					<p>Theucon is a string scrambler.</p>
+					<p>The algorithm takes the input string, scrambles the characters according to a sequence of integers, and returns the output string.</p>
+					<p>In this case, the sequence is prime numbers. 0 is an awkward case that is included in the sequence for simplicity.
+					<p><code>"The quick brown fox jumps over the lazy dog."</code> would encrypt to become <code>"Te ucrwo prtzo.hikbnjmv lqo xsh d u eafeygo "</code></p>
 				</div>
 			</div>
 			<div class="row">
@@ -70,6 +90,7 @@
 				By <a href="http://master5o1.com/">master5o1</a> &middot; And a little help from my <a href="https://github.com/ualug?tab=members">friends</a> &middot;
 				Hosted with <a href="http://pages.github.com/">GitHub:Pages</a> (<a href="https://github.com/master5o1/lolcryption.master5o1.com">repo</a>)
 				<div>imgur encrypt/decrypt derived from <a href="http://imgur.com/gallery/xyEbEqW">this game</a>.</div>
+				<div>Theucon devised by my brother.</div>
 			</div>
 		</div>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>

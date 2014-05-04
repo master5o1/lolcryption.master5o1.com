@@ -25,7 +25,7 @@
     var delolcrypt = function (str) {
         return tr(str, 'iouaenpqrstvwxyzbcdfghjklm', 'aeioubcdfghjklmnpqrstvwxyz');
     };
-    
+
     var rot13 = function (str) {
         return tr(str, 'abcdefghijklmnopqrstuvwxyz', 'nopqrstuvwxyzabcdefghijklm');
     };
@@ -38,7 +38,7 @@
         var plaintext = delolcrypt($('#ciphertext').val());
         $('#plaintext').val(plaintext);
     });
-    
+
     $('#imgurEncrypt').on('click', function () {
         var ciphertext = imgurEncrypt($('#plaintext').val());
         $('#ciphertext').val(ciphertext);
@@ -47,13 +47,92 @@
         var plaintext = imgurDecrypt($('#ciphertext').val());
         $('#plaintext').val(plaintext);
     });
-    
+
+    $('#theuconEncrypt').on('click', function () {
+        var ciphertext = theuconEncrypt($('#plaintext').val());
+        $('#ciphertext').val(ciphertext);
+    });
+    $('#theuconDecrypt').on('click', function () {
+        var plaintext = theuconDecrypt($('#ciphertext').val());
+        $('#plaintext').val(plaintext);
+    });
+
     $('#rot13').on('click', function () {
         var plaintext = rot13($('#plaintext').val());
         var ciphertext = rot13($('#ciphertext').val());
         $('#ciphertext').val(ciphertext);
         $('#plaintext').val(plaintext);
     });
+
+
+    function theuconDecrypt(str) {
+        var output = [];
+        var remaining = str.split('');
+        while (remaining.length) {
+            var primes = [0].concat(primesUntil(remaining.length));
+            var currentOutput = new Array(remaining.length).join('-').split('-');
+            var current = remaining.splice(0, primes.length);
+
+            for (var i = 0; i < primes.length; i++) {
+                currentOutput[primes[i]] = current[i];
+            }
+
+            if (output.length === 0) {
+                output = currentOutput;
+            } else {
+                for (var j = 0; j < output.length; j++) {
+                    if (output[j] === '') {
+                        output[j] = currentOutput.shift();
+                    }
+                }
+            }
+        }
+
+        return output.join('');
+    }
+
+    function theuconEncrypt(input) {
+        var output = [],
+            remaining = input.split('');
+        while (remaining.length > 0) {
+            var primeIndexed = [],
+                nonPrimeIndexed = [];
+            for (var i = 0; i < remaining.length; i++) {
+                if (i === 0 || isPrime(i)) {
+                    primeIndexed.push(remaining[i]);
+                } else {
+                    nonPrimeIndexed.push(remaining[i]);
+                }
+            }
+            output = output.concat(primeIndexed);
+            remaining = nonPrimeIndexed;
+        }
+
+        return output.join('');
+    }
+
+    function isPrime(n) {
+        if (n == 2) {
+            return true;
+        } else if ((n < 2) || (n % 2 === 0)) {
+            return false;
+        } else {
+            for (var i = 3; i <= Math.sqrt(n); i += 2) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+    }
+
+    function primesUntil(max) {
+        var primes = [];
+        for (var i = 0; i < max; i += 1) {
+            if (isPrime(i)) {
+                primes.push(i);
+            }
+        }
+        return primes;
+    }
 
 
 })(jQuery);

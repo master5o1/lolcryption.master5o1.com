@@ -56,6 +56,15 @@
         var plaintext = theuconDecrypt($('#ciphertext').val());
         $('#plaintext').val(plaintext);
     });
+    
+    $('#theuconExEncrypt').on('click', function () {
+        var ciphertext = theuconExEncrypt($('#plaintext').val());
+        $('#ciphertext').val(ciphertext);
+    });
+    $('#theuconExDecrypt').on('click', function () {
+        var plaintext = theuconExDecrypt($('#ciphertext').val());
+        $('#plaintext').val(plaintext);
+    });
 
     $('#rot13').on('click', function () {
         var plaintext = rot13($('#plaintext').val());
@@ -64,6 +73,24 @@
         $('#plaintext').val(plaintext);
     });
 
+
+    function theuconExEncrypt(str) {
+        var spaceless = str.replace(/\ /g, '');
+        spaceless = theuconEncrypt(spaceless);
+        var characters = spaceless.split('');
+        return str.split('').map(function (c) {
+            return c === ' ' ? c : characters.shift();
+        }).join('');
+    }
+    
+    function theuconExDecrypt(str) {
+        var spaceless = str.replace(/\ /g, '');
+        spaceless = theuconDecrypt(spaceless);
+        var characters = spaceless.split('');
+        return str.split('').map(function (c) {
+            return c === ' ' ? c : characters.shift();
+        }).join('');
+    }
 
     function theuconDecrypt(str) {
         var output = [];

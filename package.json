@@ -1,0 +1,30 @@
+{
+  "name": "lolcryption-website",
+  "version": "1.0.0",
+  "description": "new website for lolcryption to learn browserify of what ever it is.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/master5o1/lolcryption.master5o1.com.git"
+  },
+  "keywords": [
+    "lolcryption"
+  ],
+  "author": "Jason Schwarzenberger <jason@master5o1.com> (http://jason.schwarzenberger.co.nz)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/master5o1/lolcryption.master5o1.com/issues"
+  },
+  "homepage": "https://github.com/master5o1/lolcryption.master5o1.com",
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.5.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "lolcryption": "^0.1.3"
+  }
+}

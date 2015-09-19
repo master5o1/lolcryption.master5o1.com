@@ -8,11 +8,14 @@
 				font-style: oblique;
 				font-size: small;
 			}
-			
+
 			textarea {
 				font-family: monospace;
 			}
 		</style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="dist/bootstrap.min.js"></script>
+    <script src="dist/script.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -28,16 +31,16 @@
 							</a>
 							<ul class="dropdown-menu" style="text-align: left;">
 								<li>
-									<a href="#" id="enlolcrypt">enLOLcrypt</a>
+									<a href="#" class="from-plaintext" data-algorithm="enlolcrypt">enLOLcrypt</a>
 								</li>
 								<li>
-									<a href="#" id="imgurEncrypt">imgur encrypt</a>
+									<a href="#" class="from-plaintext" data-algorithm="imgurEncrypt">imgur encrypt</a>
 								</li>
 								<li>
-									<a href="#" id="theuconEncrypt">Theucon encrypt</a>			
+									<a href="#" class="from-plaintext" data-algorithm="theuconEncrypt">Theucon encrypt</a>
 								</li>
 								<li>
-									<a href="#" id="theuconExEncrypt">Theucon (ignore spaces) encrypt</a>			
+									<a href="#" class="from-plaintext" data-algorithm="theuconEncryptPreserveSpaces">Theucon (ignore spaces) encrypt</a>
 								</li>
 							</ul>
 						</div>
@@ -53,16 +56,16 @@
 							</a>
 							<ul class="dropdown-menu" style="text-align: left;">
 								<li>
-									<a href="#" id="delolcrypt">deLOLcrypt</a>
+									<a href="#" class="to-plaintext" data-algorithm="delolcrypt">deLOLcrypt</a>
 								</li>
 								<li>
-									<a href="#" id="imgurDecrypt">imgur decrypt</a>
+									<a href="#" class="to-plaintext" data-algorithm="imgurDecrypt">imgur decrypt</a>
 								</li>
 								<li>
-									<a href="#" id="theuconDecrypt">Theucon decrypt</a>			
+									<a href="#" class="to-plaintext" data-algorithm="theuconDecrypt">Theucon decrypt</a>
 								</li>
 								<li>
-									<a href="#" id="theuconExDecrypt">Theucon (ignore spaces) decrypt</a>			
+									<a href="#" class="to-plaintext" data-algorithm="theuconDecryptPreserveSpaces">Theucon (ignore spaces) decrypt</a>
 								</li>
 							</ul>
 						</div>
@@ -72,7 +75,7 @@
 			<div class="row">
 				<div class="span6">
 					<legend>What is LOLcryption?</legend>
-					<p>LOLcryption is a caesar cipher like ROT13, but with a twist.</p>
+					<p><a href="https://github.com/master5o1/lolcryption">LOLcryption</a> is a caesar cipher like ROT13, but with a twist.</p>
 					<p>While ROT13 shifts the characters along one alphabet, LOLcryption uses two &mdash; consonants and vowels.</p>
 					<p>LOLcryption considers vowels separate, and shifts them independently. 'a' becomes 'i', 'e' becomes 'o', 'i' becomes 'u', 'o' becomes 'a', and 'u' becomes 'e'.</p>
 					<p>Similarly, 'b' becomes 'n', and so on until 'z' becomes 'm'.</p>
@@ -88,7 +91,7 @@
 			<div class="row">
 				<div class="btn-toolbar" style="text-align: center;">
 					<div class="btn-group">
-						<button id="rot13" class="btn">ROT13</button>
+						<button class="btn rot13">ROT13</button>
 					</div>
 				</div>
 			</div>
@@ -99,19 +102,5 @@
 				<div>Theucon devised by my brother.</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/lolcrypt.js"></script>
-		<script type="text/javascript">
-			window._idl = {};
-			_idl.variant = "banner";
-			(function() {
-				var idl = document.createElement('script');
-				idl.type = 'text/javascript';
-				idl.async = true;
-				idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'banner');
-				document.getElementsByTagName('body')[0].appendChild(idl);
-			})();
-		</script>
 	</body>
 </html>

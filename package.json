@@ -24,7 +24,7 @@
     "eslint": "^1.5.0"
   },
   "dependencies": {
-    "jquery": "^3.3.1",
+    "jquery": "^2.2.4",
     "lolcryption": "^0.1.4"
   }
 }
